@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package auth;
+option go_package = "github.com/carinfinin/auth_golang";
+
+
+service Auth {
+  rpc Register(RegisterRequest) returns (RegisterResponse);
+  rpc Login(LoginRequest) returns (LoginResponse);
+  rpc IsAdmin(IsAdminRequest) returns (IsAdminResponse);
+}
+
+message RegisterRequest {
+  string email = 1; // Email for register
+  string password = 2;
+}
+
+message RegisterResponse {
+  int64 id = 1;
+}
+
+message LoginRequest {
+  string email = 1; // Email for register
+  string password = 2;
+  int32 app = 3;
+}
+
+message LoginResponse {
+  string token = 1;
+}
+
+message IsAdminRequest {
+  int64 id = 1;
+}
+message IsAdminResponse {
+  bool is_admin = 1;
+}
+//service UserInfo {}
